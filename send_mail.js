@@ -1,5 +1,4 @@
-const nodemailer = require("nodemailer");
-const config = require("./config");
+const sendgrid = require("@sendgrid/mail");
 module.exports = {
   async sendMailExample(payload) {
     let output = `
@@ -67,11 +66,11 @@ module.exports = {
     
     
                     `;
-
-    const smtpTransport = nodemailer.createTransport(config.smtpTransport);
+    // setting apiKey
+    sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
     const mail = {
-      to: "aw12051996@gmail.com",
+      to: payload.email,
       from: "aw12051996@gmail.com",
       subject: "Tes send mail with gmail",
       generateTextFromHTML: true,
