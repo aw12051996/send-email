@@ -71,7 +71,7 @@ module.exports = {
     const smtpTransport = nodemailer.createTransport(config.smtpTransport);
 
     const mail = {
-      to: "aw12051996@gmail.com",
+      to: payload.email,
       from: "aw12051996@gmail.com",
       subject: "Tes send mail with gmail",
       generateTextFromHTML: true,
